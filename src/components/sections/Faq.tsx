@@ -8,7 +8,7 @@ export function Faq() {
     <section id="faq" className="snap-section py-24 sm:py-32">
       <Container className="flex flex-col gap-14">
         <SectionHeading eyebrow="FAQ" title="Questions fréquentes." />
-        <Accordion items={faqItems} />
+        <Accordion items={[...faqItems]} />
       </Container>
     </section>
   )

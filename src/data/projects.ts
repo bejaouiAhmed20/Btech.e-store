@@ -160,8 +160,8 @@ export const projects: Project[] = [
   name: "Olivier & Jasmin",
   type: "website",
   category: ["restaurant", "cafe-resto", "menu"],
-  url: "https://oliver-jasmin.netlify.app",
-  image: "https://res.cloudinary.com/zrhkws3p/image/upload/v1783763256/Screenshot_2026-07-11_103947_qwkeen.png",
+  url: 'https://oliver-jasmin.netlify.app',
+  image: 'https://res.cloudinary.com/zrhkws3p/image/upload/v1783763256/Screenshot_2026-07-11_103947_qwkeen.png',
   price: 399,
   currency: "DT",
   badge: "promo"

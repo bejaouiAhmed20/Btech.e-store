@@ -1,5 +1,5 @@
 import { Seo } from '@/components/common/Seo'
-import { Hero, About, Services, Portfolio, Pricing, WhyChooseUs, Contact, Faq } from '@/components/sections'
+import { Hero, About, Services, WhyChooseUs, Contact, Faq, Portfolio } from '@/components/sections'
 
 export default function Home() {
   return (

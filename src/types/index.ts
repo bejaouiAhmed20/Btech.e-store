@@ -24,6 +24,9 @@ export type PortfolioCategory =
   | 'coffee-shop'
   | 'cafe-resto'
   | 'wedding'
+  | 'web-apps'
+  | 'branding'
+  | 'graphic-design'
 
 export interface PortfolioProject {
   id: string

@@ -15,8 +15,8 @@ export const SITE = {
 /** Essential links shown in the navbar — kept short and intentional. */
 export const NAV_SECTIONS = [
   { id: 'home', label: 'Accueil' },
-  { id: 'services', label: 'Services' },
   { id: 'portfolio', label: 'Projets' },
+  { id: 'services', label: 'Services' },
   // { id: 'pricing', label: 'Tarifs' },
   { id: 'contact', label: 'Contact' },
 ] as const

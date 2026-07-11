@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import type { LucideProps } from 'lucide-react'
+// Removed LucideProps import due to missing type declarations
 import {
   BadgeCheck,
   Coffee,
@@ -45,6 +45,12 @@ const iconRegistry = {
 } as const
 
 export type IconName = keyof typeof iconRegistry
+
+type LucideProps = React.SVGProps<SVGSVGElement> & {
+  size?: number | string
+  color?: string
+  strokeWidth?: number | string
+}
 
 interface IconProps extends LucideProps {
   name: IconName

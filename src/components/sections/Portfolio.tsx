@@ -17,6 +17,9 @@ const FILTER_LABELS: Record<PortfolioCategory, string> = {
   'coffee-shop': 'Cafés',
   'cafe-resto': 'Cafés & Restos',
   wedding: 'Mariages',
+  branding: 'Branding',
+  'graphic-design': 'Design Graphique',
+  'web-apps': 'Applications Web',
 }
 
 /**
