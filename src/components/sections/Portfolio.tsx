@@ -171,8 +171,15 @@ export function Portfolio() {
                         <h3 className="font-display text-lg font-semibold text-ink-900">
                           {project.name}
                         </h3>
-                        <span className="font-display text-lg font-bold text-primary-600 shrink-0">
-                          {project.price} {project.currency}
+                        <span className="flex items-baseline gap-2 shrink-0">
+                          {project.badge === 'promo' && project.pp && (
+                            <span className="font-display text-sm font-semibold text-red-500 line-through">
+                              {project.pp} {project.currency}
+                            </span>
+                          )}
+                          <span className="font-display text-lg font-bold text-primary-600">
+                            {project.price} {project.currency}
+                          </span>
                         </span>
                       </div>
 

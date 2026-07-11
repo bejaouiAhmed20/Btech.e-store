@@ -93,6 +93,9 @@ export interface Project {
 
   /** Optional badge to display (e.g., 'promo' or 'new'). */
   badge?: 'promo' | 'new'
+
+  /** Previous price before promo (shown with strikethrough on promo items). */
+  pp?: number
 }
 
 /**
@@ -112,6 +115,7 @@ export const projects: Project[] = [
     price: 199,
     currency: 'DT',
     badge: 'promo',
+    pp: 349,
   },
   {
     name: 'Mohamed Wedding',
@@ -134,6 +138,7 @@ export const projects: Project[] = [
     price: 149,
     currency: 'DT',
     badge: 'promo',
+    pp: 299,
   },
   {
     name: 'Cafe Lumière',
@@ -164,6 +169,20 @@ export const projects: Project[] = [
   image: 'https://res.cloudinary.com/zrhkws3p/image/upload/v1783763256/Screenshot_2026-07-11_103947_qwkeen.png',
   price: 399,
   currency: "DT",
-  badge: "promo"
+  badge: "promo",
+  pp: 599,
+},
+{
+  name: 'Wedding Simple',
+  type: 'website',
+  category: ['wedding invitation'],
+  url: 'https://simpleweddinginviatation.netlify.app/',
+  image: 'https://res.cloudinary.com/zrhkws3p/image/upload/v1783770829/Screenshot_2026-07-11_125308_keduuo.png',
+  currency: 'DT',
+  price: 99,
+  badge: "promo",
+  pp: 199,
 }
+
+
 ]
