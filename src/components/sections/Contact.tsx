@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { Globe, Mail, MapPin, Phone } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -9,22 +8,20 @@ import { SITE } from '@/constants/site'
 import { fadeUp, slideInLeft, viewportOnce } from '@/animations/variants'
 
 const infoItems = [
-  { icon: MapPin, labelKey: 'contact.info.address' as const, value: SITE.address },
-  { icon: Mail, labelKey: 'contact.info.email' as const, value: SITE.email },
-  { icon: Phone, labelKey: 'contact.info.phone' as const, value: SITE.phone },
-  { icon: Globe, labelKey: 'contact.info.website' as const, value: SITE.website },
+  { icon: MapPin, id: 'address', value: SITE.address },
+  { icon: Mail, id: 'email', value: SITE.email },
+  { icon: Phone, id: 'phone', value: SITE.phone },
+  { icon: Globe, id: 'website', value: SITE.website },
 ]
 
 export function Contact() {
-  const { t } = useTranslation()
-
   return (
     <section id="contact" className="snap-section py-24 sm:py-32">
       <Container className="flex flex-col gap-14">
         <SectionHeading
-          eyebrow={t('contact.eyebrow')}
-          title={t('contact.title')}
-          subtitle={t('contact.subtitle')}
+          eyebrow="Contactez-nous"
+          title="Construisons ensemble quelque chose de formidable."
+          subtitle="Parlez-nous de votre projet et notre équipe vous répondra sous un jour ouvré."
         />
 
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -50,7 +47,7 @@ export function Contact() {
             >
               {infoItems.map((item) => (
                 <div
-                  key={item.labelKey}
+                  key={item.id}
                   className="flex flex-col items-center gap-2 rounded-2xl border border-ink-100 bg-white p-4 text-center shadow-soft"
                 >
                   <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-50 text-accent-600">

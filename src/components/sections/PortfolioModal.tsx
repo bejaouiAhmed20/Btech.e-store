@@ -1,8 +1,18 @@
-import { useTranslation } from 'react-i18next'
 import { ExternalLink, GitBranch } from 'lucide-react'
 import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
 import type { PortfolioProject } from '@/types'
+
+const CATEGORY_LABELS: Record<string, string> = {
+  websites: 'Sites Web',
+  'web-apps': 'Applications Web',
+  branding: 'Branding',
+  restaurant: 'Restaurants',
+  'coffee-shop': 'Cafés',
+  'graphic-design': 'Design Graphique',
+  'cafe-resto': 'Cafés & Restos',
+  wedding: 'Mariages',
+}
 
 interface PortfolioModalProps {
   project: PortfolioProject | null
@@ -10,8 +20,6 @@ interface PortfolioModalProps {
 }
 
 export function PortfolioModal({ project, onClose }: PortfolioModalProps) {
-  const { t } = useTranslation()
-
   return (
     <Modal isOpen={!!project} onClose={onClose} labelledBy="portfolio-modal-title">
       {project && (
@@ -30,7 +38,7 @@ export function PortfolioModal({ project, onClose }: PortfolioModalProps) {
 
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-accent-600">
-              {t(`portfolio.filters.${project.category}`)}
+              {CATEGORY_LABELS[project.category] || project.category}
             </p>
             <h3 id="portfolio-modal-title" className="mt-1 font-display text-2xl font-bold text-ink-900">
               {project.name}
@@ -41,7 +49,7 @@ export function PortfolioModal({ project, onClose }: PortfolioModalProps) {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div>
               <h4 className="mb-2 font-display text-sm font-semibold uppercase tracking-wide text-ink-900">
-                {t('portfolio.modal.technologies')}
+                Technologies
               </h4>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (
@@ -56,19 +64,19 @@ export function PortfolioModal({ project, onClose }: PortfolioModalProps) {
             </div>
             <div>
               <h4 className="mb-2 font-display text-sm font-semibold uppercase tracking-wide text-ink-900">
-                {t('portfolio.modal.results')}
+                Résultats
               </h4>
               <p className="text-sm text-ink-500">{project.results}</p>
             </div>
             <div>
               <h4 className="mb-2 font-display text-sm font-semibold uppercase tracking-wide text-ink-900">
-                {t('portfolio.modal.challenges')}
+                Défis
               </h4>
               <p className="text-sm text-ink-500">{project.challenges}</p>
             </div>
             <div>
               <h4 className="mb-2 font-display text-sm font-semibold uppercase tracking-wide text-ink-900">
-                {t('portfolio.modal.solutions')}
+                Solutions
               </h4>
               <p className="text-sm text-ink-500">{project.solutions}</p>
             </div>
@@ -80,7 +88,7 @@ export function PortfolioModal({ project, onClose }: PortfolioModalProps) {
                 icon={<ExternalLink size={16} />}
                 onClick={() => window.open(project.liveUrl, '_blank', 'noreferrer')}
               >
-                {t('portfolio.liveDemo')}
+                Démo en ligne
               </Button>
             )}
             {project.githubUrl && (

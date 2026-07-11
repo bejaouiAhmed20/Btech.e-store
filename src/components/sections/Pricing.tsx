@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { Check, Star } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -10,15 +9,13 @@ import { pricingPlans } from '@/data/pricing'
 import { scrollToId, cn } from '@/lib/utils'
 
 export function Pricing() {
-  const { t } = useTranslation()
-
   return (
     <section id="pricing" className="snap-section bg-ink-50/60 py-24 sm:py-32">
       <Container className="flex flex-col gap-14">
         <SectionHeading
-          eyebrow={t('pricing.eyebrow')}
-          title={t('pricing.title')}
-          subtitle={t('pricing.subtitle')}
+          eyebrow="Tarifs"
+          title="Des offres simples et transparentes pour chaque étape."
+          subtitle="Choisissez l'offre adaptée à votre entreprise aujourd'hui — chaque offre peut évoluer avec vous."
         />
 
         <motion.div
@@ -29,11 +26,6 @@ export function Pricing() {
           className="grid grid-cols-1 gap-6 lg:grid-cols-3"
         >
           {pricingPlans.map((plan) => {
-            const features = t(`pricing.plans.${plan.id}.features`, { returnObjects: true }) as Record<
-              string,
-              string
-            >
-
             return (
               <motion.div
                 key={plan.id}
@@ -50,7 +42,7 @@ export function Pricing() {
                 {plan.popular && (
                   <span className="absolute -top-3.5 start-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-gradient-to-r from-primary-600 to-accent-500 px-4 py-1.5 text-xs font-semibold text-white shadow-lift">
                     <Star size={12} fill="currentColor" strokeWidth={0} />
-                    {t('pricing.popular')}
+                    Le plus populaire
                   </span>
                 )}
 
@@ -67,27 +59,27 @@ export function Pricing() {
 
                 <div>
                   <h3 className="font-display text-xl font-semibold text-ink-900">
-                    {t(`pricing.plans.${plan.id}.name`)}
+                    {plan.name}
                   </h3>
-                  <p className="mt-2 text-sm text-ink-500">{t(`pricing.plans.${plan.id}.description`)}</p>
+                  <p className="mt-2 text-sm text-ink-500">{plan.description}</p>
                 </div>
 
                 <div className="flex items-baseline gap-2 border-t border-ink-100 pt-6">
                   {plan.price !== null ? (
                     <>
-                      <span className="text-sm text-ink-500">{t('pricing.startingFrom')}</span>
+                      <span className="text-sm text-ink-500">À partir de</span>
                       <span className="font-display text-4xl font-bold text-ink-900">{plan.price}</span>
                       <span className="text-sm font-medium text-ink-500">{plan.currency}</span>
                     </>
                   ) : (
                     <span className="font-display text-3xl font-bold text-ink-900">
-                      {t('pricing.onQuote')}
+                      Sur devis
                     </span>
                   )}
                 </div>
 
                 <ul className="flex flex-1 flex-col gap-3">
-                  {Object.values(features).map((feature) => (
+                  {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5 text-sm text-ink-600">
                       <Check size={16} className="mt-0.5 shrink-0 text-accent-500" />
                       {feature}
@@ -100,7 +92,7 @@ export function Pricing() {
                   className="w-full"
                   onClick={() => scrollToId('contact')}
                 >
-                  {t(`pricing.plans.${plan.id}.cta`)}
+                  {plan.cta}
                 </Button>
               </motion.div>
             )
@@ -114,7 +106,7 @@ export function Pricing() {
           viewport={viewportOnce}
           className="text-center text-sm text-ink-500 max-w-3xl mx-auto leading-relaxed"
         >
-          {t('pricing.disclaimer')}
+          Les prix indiqués sont des tarifs de départ. Le prix final dépend des fonctionnalités, du design et des besoins spécifiques de votre projet. Demandez votre devis gratuitement et sans engagement.
         </motion.p>
       </Container>
     </section>

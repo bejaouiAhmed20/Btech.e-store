@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -7,12 +6,10 @@ import { fadeUp, staggerContainer, viewportOnce } from '@/animations/variants'
 import { whyChooseItems } from '@/data/values'
 
 export function WhyChooseUs() {
-  const { t } = useTranslation()
-
   return (
     <section id="why" className="snap-section bg-ink-50/60 py-24 sm:py-32">
       <Container className="flex flex-col gap-14">
-        <SectionHeading eyebrow={t('why.eyebrow')} title={t('why.title')} />
+        <SectionHeading eyebrow="Pourquoi choisir BTech" title="L'avantage de travailler avec BTech." />
 
         <motion.div
           variants={staggerContainer(0.06)}
@@ -32,9 +29,9 @@ export function WhyChooseUs() {
                 <Icon name={item.icon as IconName} size={20} />
               </span>
               <h3 className="font-display text-base font-semibold text-ink-900">
-                {t(`why.items.${item.id}.title`)}
+                {item.title}
               </h3>
-              <p className="text-sm text-ink-500">{t(`why.items.${item.id}.description`)}</p>
+              <p className="text-sm text-ink-500">{item.description}</p>
             </motion.div>
           ))}
         </motion.div>

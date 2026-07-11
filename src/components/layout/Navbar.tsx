@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -11,7 +10,6 @@ import { scrollToId, cn } from '@/lib/utils'
 import btechLogo from '@/assets/images/btech_logo.png'
 
 export function Navbar() {
-  const { t } = useTranslation()
   const scrolled = useScrolled(40)
   const [mobileOpen, setMobileOpen] = useState(false)
   const activeId = useActiveSection(NAV_SECTIONS.map((s) => s.id))
@@ -53,7 +51,7 @@ export function Navbar() {
                 'hover:text-accent-600',
               )}
             >
-              {t(section.key)}
+              {section.label}
               {activeId === section.id && (
                 <motion.span
                   layoutId="nav-underline"
@@ -67,11 +65,11 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Button size="sm" className="hidden lg:inline-flex" onClick={() => handleNavClick('contact')}>
-            {t('nav.cta')}
+            Commencez maintenant
           </Button>
           <button
             onClick={() => setMobileOpen((o) => !o)}
-            aria-label={t('common.toggleMenu')}
+            aria-label="Basculer le menu"
             aria-expanded={mobileOpen}
             className="flex h-10 w-10 items-center justify-center rounded-full text-ink-900 lg:hidden"
           >
@@ -99,11 +97,11 @@ export function Navbar() {
                     activeId === section.id ? 'bg-accent-50 text-accent-700' : 'text-ink-700',
                   )}
                 >
-                  {t(section.key)}
+                  {section.label}
                 </button>
               ))}
               <Button className="mt-2 w-full" onClick={() => handleNavClick('contact')}>
-                {t('nav.cta')}
+                Commencez maintenant
               </Button>
             </Container>
           </motion.nav>

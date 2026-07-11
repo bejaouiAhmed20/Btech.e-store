@@ -14,32 +14,32 @@ export const SITE = {
 
 /** Essential links shown in the navbar — kept short and intentional. */
 export const NAV_SECTIONS = [
-  { id: 'home', key: 'nav.home' },
-  { id: 'services', key: 'nav.services' },
-  { id: 'portfolio', key: 'nav.portfolio' },
-  { id: 'pricing', key: 'nav.pricing' },
-  { id: 'contact', key: 'nav.contact' },
+  { id: 'home', label: 'Accueil' },
+  { id: 'services', label: 'Services' },
+  { id: 'portfolio', label: 'Projets' },
+  // { id: 'pricing', label: 'Tarifs' },
+  { id: 'contact', label: 'Contact' },
 ] as const
 
 export const FOOTER_LINKS = [
-  { id: 'about', key: 'nav.about' },
-  { id: 'services', key: 'nav.services' },
-  { id: 'portfolio', key: 'nav.portfolio' },
-  { id: 'pricing', key: 'nav.pricing' },
-  { id: 'faq', key: 'nav.faq' },
-  { id: 'contact', key: 'nav.contact' },
+  { id: 'about', label: 'À propos' },
+  { id: 'services', label: 'Services' },
+  { id: 'portfolio', label: 'Projets' },
+  // { id: 'pricing', label: 'Tarifs' },
+  { id: 'faq', label: 'FAQ' },
+  { id: 'contact', label: 'Contact' },
 ] as const
 
 export const STATS = [
-  { id: 'projects', value: 180, suffix: '+', key: 'hero.stats.projects' },
-  { id: 'clients', value: 120, suffix: '+', key: 'hero.stats.clients' },
-  { id: 'years', value: 6, suffix: '+', key: 'hero.stats.years' },
-  { id: 'satisfaction', value: 98, suffix: '%', key: 'hero.stats.satisfaction' },
+  { id: 'projects', value: 180, suffix: '+', label: 'Projets réalisés' },
+  { id: 'clients', value: 120, suffix: '+', label: "Clients satisfaits" },
+  { id: 'years', value: 6, suffix: '+', label: "Années d'expérience" },
+  { id: 'satisfaction', value: 98, suffix: '%', label: 'Satisfaction client' },
 ] as const
 
 export const TRUST_INDICATORS = [
-  { id: 'projects', icon: 'Rocket', key: 'hero.trust.projects' },
-  { id: 'delivery', icon: 'Zap', key: 'hero.trust.delivery' },
-  { id: 'support', icon: 'LifeBuoy', key: 'hero.trust.support' },
-  { id: 'modern', icon: 'Sparkles', key: 'hero.trust.modern' },
+  { id: 'projects', icon: 'Rocket', label: '100+ Projets réalisés' },
+  { id: 'delivery', icon: 'Zap', label: 'Livraison rapide' },
+  { id: 'support', icon: 'LifeBuoy', label: 'Support professionnel' },
+  { id: 'modern', icon: 'Sparkles', label: 'Solutions modernes' },
 ] as const

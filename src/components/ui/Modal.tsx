@@ -3,7 +3,6 @@ import type { ReactNode } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { createPortal } from 'react-dom'
 import { X } from 'lucide-react'
-import { useTranslation } from 'react-i18next'
 
 interface ModalProps {
   isOpen: boolean
@@ -13,7 +12,6 @@ interface ModalProps {
 }
 
 export function Modal({ isOpen, onClose, children, labelledBy }: ModalProps) {
-  const { t } = useTranslation()
   const closeRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
@@ -57,7 +55,7 @@ export function Modal({ isOpen, onClose, children, labelledBy }: ModalProps) {
             <button
               ref={closeRef}
               onClick={onClose}
-              aria-label={t('common.close')}
+              aria-label="Fermer"
               className="absolute end-5 top-5 rounded-full p-2 text-ink-500 transition-colors hover:bg-ink-100 hover:text-ink-900"
             >
               <X size={20} />

@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { Icon, type IconName } from '@/components/ui/Icon'
 import { Container } from '@/components/ui/Container'
@@ -38,8 +37,6 @@ function StatCounter({
 }
 
 export function About() {
-  const { t } = useTranslation()
-
   return (
     <section id="about" className="snap-section relative overflow-hidden bg-ink-50/60 py-24 sm:py-32">
       <Container className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-16">
@@ -51,24 +48,30 @@ export function About() {
           viewport={viewportOnce}
           className="flex flex-col gap-6"
         >
-          <Badge>{t('about.eyebrow')}</Badge>
+          <Badge>À propos de BTech</Badge>
           <h2 className="text-balance font-display text-3xl font-semibold leading-tight text-ink-900 sm:text-4xl">
-            {t('about.title')}
+            Nous construisons des identités numériques dont les entreprises sont fières.
           </h2>
-          <p className="text-base text-ink-500 sm:text-lg">{t('about.description')}</p>
+          <p className="text-base text-ink-500 sm:text-lg">
+            BTech est une agence de solutions numériques qui aide les entreprises de toute taille à établir une présence puissante et fiable, en ligne comme hors ligne.
+          </p>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">
               <p className="mb-2 font-mono text-[11px] font-semibold uppercase tracking-widest text-accent-600">
                 Mission
               </p>
-              <p className="text-sm text-ink-600">{t('about.mission')}</p>
+              <p className="text-sm text-ink-600">
+                Notre mission : offrir à chaque client l'identité numérique d'une grande marque, sans la complexité.
+              </p>
             </div>
             <div className="rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">
               <p className="mb-2 font-mono text-[11px] font-semibold uppercase tracking-widest text-accent-600">
                 Vision
               </p>
-              <p className="text-sm text-ink-600">{t('about.vision')}</p>
+              <p className="text-sm text-ink-600">
+                Notre vision : devenir le partenaire digital de référence des entreprises ambitieuses en Tunisie et au-delà.
+              </p>
             </div>
           </div>
 
@@ -88,7 +91,7 @@ export function About() {
                 <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent-50 text-accent-600">
                   <Icon name={value.icon as IconName} size={14} />
                 </span>
-                <span className="text-sm font-medium text-ink-700">{t(value.titleKey)}</span>
+                <span className="text-sm font-medium text-ink-700">{value.title}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -109,7 +112,7 @@ export function About() {
                 key={stat.id}
                 value={stat.value}
                 suffix={stat.suffix}
-                label={t(stat.key)}
+                label={stat.label}
                 index={index}
               />
             ))}

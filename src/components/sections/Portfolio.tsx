@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ExternalLink, Clock } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -11,32 +10,28 @@ import { projects } from '@/data/projects'
 import type { PortfolioCategory } from '@/types'
 import { cn } from '@/lib/utils'
 
+const FILTER_LABELS: Record<PortfolioCategory, string> = {
+  all: 'Tous',
+  websites: 'Sites Web',
+  restaurant: 'Restaurants',
+  'coffee-shop': 'Cafés',
+  'cafe-resto': 'Cafés & Restos',
+  wedding: 'Mariages',
+}
+
 /**
  * Maps a portfolio filter key to the project `type` and `category` values
  * stored in projects.ts.
- *
- * 'all'           → show every project
- * 'websites'      → match type === 'website'
- * 'web-apps'      → match type === 'web-app'
- * 'branding'      → match category includes 'branding'
- * 'restaurant'    → match category includes 'restaurant'
- * 'coffee-shop'   → match category includes 'cafe-resto'  (legacy filter key)
- * 'cafe-resto'    → match category includes 'cafe-resto'
- * 'graphic-design'→ match category includes 'graphic-design'
- * 'wedding'       → match category includes 'wedding invitation'
  */
 function matchesFilter(project: (typeof projects)[number], filter: PortfolioCategory): boolean {
   if (filter === 'all') return true
   if (filter === 'websites') return project.type === 'website'
   if (filter === 'coffee-shop') return project.category.includes('cafe-resto')
   if (filter === 'wedding') return project.category.includes('wedding invitation')
-  // For all other filters (restaurant, cafe-resto)
-  // match directly against the category array
   return project.category.includes(filter as unknown as typeof project.category[number])
 }
 
 export function Portfolio() {
-  const { t } = useTranslation()
   const [activeFilter, setActiveFilter] = useState<PortfolioCategory>('all')
 
   const filteredProjects = useMemo(
@@ -50,9 +45,9 @@ export function Portfolio() {
     <section id="portfolio" className="snap-section py-24 sm:py-32">
       <Container className="flex flex-col gap-12">
         <SectionHeading
-          eyebrow={t('portfolio.eyebrow')}
-          title={t('portfolio.title')}
-          subtitle={t('portfolio.subtitle')}
+          eyebrow="Nos réalisations"
+          title="Une sélection de projets qui parlent d'eux-mêmes."
+          subtitle="Un aperçu des sites, applications et marques que nous avons contribué à créer."
         />
 
         {/* Filter tabs */}
@@ -68,7 +63,7 @@ export function Portfolio() {
                   : 'bg-ink-100 text-ink-600 hover:bg-ink-200',
               )}
             >
-              {t(`portfolio.filters.${filter}`)}
+              {FILTER_LABELS[filter]}
             </button>
           ))}
         </div>
@@ -90,10 +85,10 @@ export function Portfolio() {
               </span>
               <div className="flex flex-col gap-1">
                 <p className="font-display text-xl font-semibold text-ink-800">
-                  {t('portfolio.comingSoon')}
+                  Bientôt disponible
                 </p>
                 <p className="max-w-xs text-sm text-ink-500">
-                  {t('portfolio.comingSoonDesc')}
+                  De nouveaux projets dans cette catégorie arrivent très prochainement.
                 </p>
               </div>
             </motion.div>
@@ -149,7 +144,7 @@ export function Portfolio() {
                       {/* Hover overlay with live link */}
                       <div className="absolute inset-0 flex items-end bg-gradient-to-t from-ink-950/80 via-ink-950/10 to-transparent p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                         <span className="flex items-center gap-1.5 rounded-full bg-accent-500 px-4 py-2 text-xs font-semibold text-white transition-transform hover:-translate-y-0.5">
-                          {t('portfolio.liveDemo')} <ExternalLink size={12} />
+                          Démo en ligne <ExternalLink size={12} />
                         </span>
                       </div>
                     </div>
@@ -180,7 +175,7 @@ export function Portfolio() {
 
                       {/* External link indicator */}
                       <span className="flex items-center gap-1 text-sm font-medium text-accent-600 transition-colors group-hover:text-accent-700">
-                        {t('portfolio.liveDemo')} <ExternalLink size={13} />
+                        Démo en ligne <ExternalLink size={13} />
                       </span>
                     </div>
                   </motion.a>

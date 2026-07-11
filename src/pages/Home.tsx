@@ -1,13 +1,13 @@
-import { useTranslation } from 'react-i18next'
 import { Seo } from '@/components/common/Seo'
 import { Hero, About, Services, Portfolio, Pricing, WhyChooseUs, Contact, Faq } from '@/components/sections'
 
 export default function Home() {
-  const { t } = useTranslation()
-
   return (
     <>
-      <Seo title={t('meta.title')} description={t('meta.description')} />
+      <Seo
+        title="BTech — Transformer les idées en expériences numériques"
+        description="BTech est une agence de solutions numériques qui crée des sites web, applications, identités de marque et supports marketing modernes en Tunisie."
+      />
       <Hero />
       <Portfolio />
       <About />

@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next'
 import { Mail, MapPin, Phone, Globe } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { FOOTER_LINKS, SITE } from '@/constants/site'
@@ -67,7 +66,6 @@ const socialLinks = [
 ]
 
 export function Footer() {
-  const { t } = useTranslation()
   const year = new Date().getFullYear()
 
   return (
@@ -79,7 +77,9 @@ export function Footer() {
             alt="BTech logo"
             className="h-10 w-auto object-contain brightness-0 invert"
           />
-          <p className="max-w-xs text-sm leading-relaxed text-ink-400">{t('footer.description')}</p>
+          <p className="max-w-xs text-sm leading-relaxed text-ink-400">
+            BTech est une agence de solutions numériques qui crée des sites web, applications et marques modernes pour les entreprises ambitieuses.
+          </p>
           <div className="flex gap-2 pt-2">
             {socialLinks.map(({ href, icon: SocialIcon, label }) => (
               <a
@@ -98,7 +98,7 @@ export function Footer() {
 
         <div>
           <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-white">
-            {t('footer.quickLinks')}
+            Liens rapides
           </h3>
           <ul className="flex flex-col gap-3 text-sm">
             {FOOTER_LINKS.map((section) => (
@@ -107,7 +107,7 @@ export function Footer() {
                   onClick={() => scrollToId(section.id)}
                   className="transition-colors hover:text-accent-400"
                 >
-                  {t(section.key)}
+                  {section.label}
                 </button>
               </li>
             ))}
@@ -116,7 +116,7 @@ export function Footer() {
 
         <div>
           <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-white">
-            {t('footer.services')}
+            Services
           </h3>
           <ul className="flex flex-col gap-3 text-sm">
             {services.slice(0, 6).map((service) => (
@@ -125,7 +125,7 @@ export function Footer() {
                   onClick={() => scrollToId('services')}
                   className="transition-colors hover:text-accent-400"
                 >
-                  {t(service.titleKey)}
+                  {service.title}
                 </button>
               </li>
             ))}
@@ -134,11 +134,11 @@ export function Footer() {
 
         <div>
           <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-white">
-            {t('footer.contact')}
+            Contact
           </h3>
           <ul className="flex flex-col gap-3 text-sm">
             <li className="flex items-start gap-2">
-              <MapPin size={16} className="mt-0.5 shrink-0 text-accent-400" /> {t('contact.info.address')}
+              <MapPin size={16} className="mt-0.5 shrink-0 text-accent-400" /> Tunis, Tunisie
             </li>
             <li className="flex items-center gap-2">
               <Mail size={16} className="shrink-0 text-accent-400" /> {SITE.email}
@@ -156,9 +156,9 @@ export function Footer() {
       <div className="border-t border-white/10">
         <Container className="flex flex-col items-center justify-between gap-2 py-6 text-xs text-ink-500 sm:flex-row">
           <p>
-            © {year} BTech. {t('footer.rights')}
+            © {year} BTech. Tous droits réservés.
           </p>
-          <p>{t('footer.madeWith')}</p>
+          <p>Conçu et développé avec soin par BTech.</p>
         </Container>
       </div>
     </footer>

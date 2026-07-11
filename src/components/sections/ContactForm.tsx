@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { Send } from 'lucide-react'
 import Snackbar from '@mui/material/Snackbar'
@@ -14,11 +13,17 @@ import { cn } from '@/lib/utils'
 
 const budgetKeys = ['small', 'medium', 'large', 'enterprise'] as const
 
+const BUDGET_LABELS = {
+  small: 'Moins de 1 500 DT',
+  medium: '1 500 – 5 000 DT',
+  large: '5 000 – 15 000 DT',
+  enterprise: '15 000 DT et plus',
+}
+
 const inputClass =
   'w-full rounded-xl border border-ink-200 bg-white px-4 py-3 text-sm text-ink-900 placeholder:text-ink-400 transition-colors focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600/20'
 
 export function ContactForm() {
-  const { t } = useTranslation()
   const [feedback, setFeedback] = useState<'success' | 'error' | null>(null)
 
   const {
@@ -55,12 +60,12 @@ export function ContactForm() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-ink-700">
-            {t('contact.form.name')}
+            Nom
           </label>
           <input
             id="name"
             type="text"
-            placeholder={t('contact.form.namePlaceholder')}
+            placeholder="Jean Dupont"
             className={cn(
               inputClass,
               errors.name && 'border-red-400 focus:border-red-500 focus:ring-red-500/20',
@@ -73,12 +78,12 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-ink-700">
-            {t('contact.form.email')}
+            Email
           </label>
           <input
             id="email"
             type="email"
-            placeholder={t('contact.form.emailPlaceholder')}
+            placeholder="jean@entreprise.com"
             className={cn(
               inputClass,
               errors.email && 'border-red-400 focus:border-red-500 focus:ring-red-500/20',
@@ -91,12 +96,12 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-ink-700">
-            {t('contact.form.phone')}
+            Téléphone
           </label>
           <input
             id="phone"
             type="tel"
-            placeholder={t('contact.form.phonePlaceholder')}
+            placeholder="+216 00 000 000"
             className={cn(
               inputClass,
               errors.phone && 'border-red-400 focus:border-red-500 focus:ring-red-500/20',
@@ -109,12 +114,12 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="company" className="mb-1.5 block text-sm font-medium text-ink-700">
-            {t('contact.form.company')}
+            Entreprise
           </label>
           <input
             id="company"
             type="text"
-            placeholder={t('contact.form.companyPlaceholder')}
+            placeholder="Nom de votre entreprise"
             className={inputClass}
             {...register('company')}
           />
@@ -122,7 +127,7 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="service" className="mb-1.5 block text-sm font-medium text-ink-700">
-            {t('contact.form.service')}
+            Service souhaité
           </label>
           <Controller
             name="service"
@@ -134,10 +139,10 @@ export function ContactForm() {
                 aria-invalid={!!errors.service}
                 {...field}
               >
-                <option value="">{t('contact.form.servicePlaceholder')}</option>
+                <option value="">Sélectionnez un service</option>
                 {services.map((service) => (
                   <option key={service.id} value={service.id}>
-                    {t(service.titleKey)}
+                    {service.title}
                   </option>
                 ))}
               </select>
@@ -148,7 +153,7 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="budget" className="mb-1.5 block text-sm font-medium text-ink-700">
-            {t('contact.form.budget')}
+            Budget
           </label>
           <Controller
             name="budget"
@@ -160,10 +165,10 @@ export function ContactForm() {
                 aria-invalid={!!errors.budget}
                 {...field}
               >
-                <option value="">{t('contact.form.budgetPlaceholder')}</option>
+                <option value="">Sélectionnez une fourchette</option>
                 {budgetKeys.map((key) => (
                   <option key={key} value={key}>
-                    {t(`contact.form.budgets.${key}`)}
+                    {BUDGET_LABELS[key]}
                   </option>
                 ))}
               </select>
@@ -175,12 +180,12 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-ink-700">
-          {t('contact.form.message')}
+          Message
         </label>
         <textarea
           id="message"
           rows={5}
-          placeholder={t('contact.form.messagePlaceholder')}
+          placeholder="Parlez-nous de votre projet..."
           className={cn(
             inputClass,
             'resize-none',
@@ -199,7 +204,7 @@ export function ContactForm() {
         icon={<Send size={16} />}
         className="self-start"
       >
-        {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
+        {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
       </Button>
 
       <Snackbar
@@ -214,7 +219,7 @@ export function ContactForm() {
           variant="filled"
           sx={{ width: '100%' }}
         >
-          {feedback === 'success' ? t('contact.form.success') : t('contact.form.error')}
+          {feedback === 'success' ? 'Merci ! Votre message a été envoyé avec succès.' : 'Une erreur est survenue. Veuillez réessayer.'}
         </Alert>
       </Snackbar>
     </motion.form>

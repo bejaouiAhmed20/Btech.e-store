@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-import { useTranslation } from 'react-i18next'
 import { motion, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -11,7 +10,6 @@ import { TRUST_INDICATORS } from '@/constants/site'
 import { scrollToId } from '@/lib/utils'
 
 export function Hero() {
-  const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { margin: '200px 0px 200px 0px' })
 
@@ -44,7 +42,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Badge>{t('hero.eyebrow')}</Badge>
+            <Badge>Agence digitale premium</Badge>
           </motion.div>
 
           <motion.h1
@@ -53,7 +51,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="max-w-xl text-balance font-display text-4xl font-bold leading-[1.1] tracking-tight text-ink-900 sm:text-5xl"
           >
-            {t('hero.headline')}
+            Des expériences numériques qui font grandir votre entreprise.
           </motion.h1>
 
           <motion.p
@@ -62,7 +60,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="max-w-lg text-balance text-lg text-ink-500"
           >
-            {t('hero.subtitle')}
+            Sites web, applications, branding, logos, design graphique et marketing digital — tout ce dont votre entreprise a besoin pour se démarquer.
           </motion.p>
 
           <motion.div
@@ -72,10 +70,10 @@ export function Hero() {
             className="flex flex-col gap-4 sm:flex-row"
           >
             <Button size="lg" icon={<ArrowRight size={18} />} onClick={() => scrollToId('contact')}>
-              {t('hero.ctaPrimary')}
+              Commencer un projet
             </Button>
             <Button size="lg" variant="outline" onClick={() => scrollToId('portfolio')}>
-              {t('hero.ctaSecondary')}
+              Voir nos réalisations
             </Button>
           </motion.div>
 
@@ -90,7 +88,7 @@ export function Hero() {
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-50 text-accent-600">
                   <Icon name={item.icon as IconName} size={15} />
                 </span>
-                {t(item.key)}
+                {item.label}
               </span>
             ))}
           </motion.div>

@@ -11,8 +11,8 @@ export type ServiceCategory =
 export interface Service {
   id: string
   icon: string
-  titleKey: string
-  descriptionKey: string
+  title: string
+  description: string
   features: string[]
   category: ServiceCategory
 }
@@ -43,15 +43,15 @@ export interface PortfolioProject {
 
 export interface FaqItem {
   id: string
-  questionKey: string
-  answerKey: string
+  question: string
+  answer: string
 }
 
 export interface TeamValue {
   id: string
   icon: string
-  titleKey: string
-  descriptionKey: string
+  title: string
+  description: string
 }
 
 export interface ContactFormValues {
