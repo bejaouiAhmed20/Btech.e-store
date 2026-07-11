@@ -1,0 +1,318 @@
+{
+  "meta": {
+    "title": "BTech — Transformer les idées en expériences numériques",
+    "description": "BTech est une agence de solutions numériques qui crée des sites web, applications, identités de marque et supports marketing modernes en Tunisie."
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "portfolio": "Projets",
+    "pricing": "Tarifs",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "cta": "Commencez maintenant"
+  },
+  "hero": {
+    "eyebrow": "Agence digitale premium",
+    "headline": "Des expériences numériques qui font grandir votre entreprise.",
+    "subtitle": "Sites web, applications, branding, logos, design graphique et marketing digital — tout ce dont votre entreprise a besoin pour se démarquer.",
+    "ctaPrimary": "Commencer un projet",
+    "ctaSecondary": "Voir nos réalisations",
+    "trust": {
+      "projects": "100+ Projets réalisés",
+      "delivery": "Livraison rapide",
+      "support": "Support professionnel",
+      "modern": "Solutions modernes"
+    },
+    "stats": {
+      "projects": "Projets réalisés",
+      "clients": "Clients satisfaits",
+      "years": "Années d'expérience",
+      "satisfaction": "Satisfaction client"
+    }
+  },
+  "about": {
+    "eyebrow": "À propos de BTech",
+    "title": "Nous construisons des identités numériques dont les entreprises sont fières.",
+    "description": "BTech est une agence de solutions numériques qui aide les entreprises de toute taille à établir une présence puissante et fiable, en ligne comme hors ligne.",
+    "mission": "Notre mission : offrir à chaque client l'identité numérique d'une grande marque, sans la complexité.",
+    "vision": "Notre vision : devenir le partenaire digital de référence des entreprises ambitieuses en Tunisie et au-delà.",
+    "values": {
+      "creativity": {
+        "title": "Créativité",
+        "description": "Une réflexion design originale adaptée à votre marque, jamais de modèles génériques."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Des technologies modernes conçues pour la performance et la durabilité."
+      },
+      "professionalism": {
+        "title": "Professionnalisme",
+        "description": "Une communication claire et une livraison fiable à chaque étape."
+      },
+      "quality": {
+        "title": "Qualité",
+        "description": "Un souci du détail méticuleux, du design au code."
+      },
+      "support": {
+        "title": "Support à long terme",
+        "description": "Nous restons à vos côtés bien après le lancement."
+      }
+    }
+  },
+  "services": {
+    "eyebrow": "Ce que nous faisons",
+    "title": "Des services conçus pour faire avancer votre entreprise.",
+    "subtitle": "Du premier croquis au dernier pixel, nous couvrons chaque discipline dont votre présence numérique a besoin.",
+    "learnMore": "En savoir plus",
+    "items": {
+      "web-development": {
+        "title": "Développement web",
+        "description": "Des sites web modernes, rapides et responsives adaptés à votre marque."
+      },
+      "web-applications": {
+        "title": "Applications web",
+        "description": "Tableaux de bord sur mesure, systèmes de réservation, CRM et ERP."
+      },
+      "branding": {
+        "title": "Branding & Logo",
+        "description": "Création de logo, identité de marque, systèmes visuels et chartes graphiques."
+      },
+      "restaurant": {
+        "title": "Solutions restaurants",
+        "description": "Sites de restaurants, menus digitaux et QR, systèmes de commande."
+      },
+      "coffee-shop": {
+        "title": "Solutions cafés",
+        "description": "Menus, branding, sites web et menus QR pour cafés."
+      },
+      "graphic-design": {
+        "title": "Design graphique",
+        "description": "Cartes de visite, flyers, affiches, stickers, packaging et cartes d'invitation."
+      },
+      "digital-marketing": {
+        "title": "Marketing digital",
+        "description": "Réseaux sociaux, créations publicitaires, landing pages et campagnes."
+      },
+      "ui-ux": {
+        "title": "Design UI/UX",
+        "description": "Applications mobiles, applications web, tableaux de bord, prototypes et wireframes."
+      }
+    }
+  },
+  "portfolio": {
+    "eyebrow": "Nos réalisations",
+    "title": "Une sélection de projets qui parlent d'eux-mêmes.",
+    "subtitle": "Un aperçu des sites, applications et marques que nous avons contribué à créer.",
+    "filters": {
+      "all": "Tous",
+      "websites": "Sites Web",
+      "web-apps": "Applications Web",
+      "branding": "Branding",
+      "restaurant": "Restaurants",
+      "coffee-shop": "Cafés",
+      "graphic-design": "Design Graphique",
+      "cafe-resto": "Cafés & Restos",
+      "wedding": "Mariages"
+    },
+    "caseStudy": "Voir le projet",
+    "liveDemo": "Démo en ligne",
+    "comingSoon": "Bientôt disponible",
+    "comingSoonDesc": "De nouveaux projets dans cette catégorie arrivent très prochainement.",
+    "modal": {
+      "technologies": "Technologies",
+      "challenges": "Défis",
+      "solutions": "Solutions",
+      "results": "Résultats"
+    }
+  },
+  "pricing": {
+    "eyebrow": "Tarifs",
+    "title": "Des offres simples et transparentes pour chaque étape.",
+    "subtitle": "Choisissez l'offre adaptée à votre entreprise aujourd'hui — chaque offre peut évoluer avec vous.",
+    "popular": "Le plus populaire",
+    "cta": "Demander un devis",
+    "onQuote": "Sur devis",
+    "startingFrom": "À partir de",
+    "disclaimer": "Les prix indiqués sont des tarifs de départ. Le prix final dépend des fonctionnalités, du design et des besoins spécifiques de votre projet. Demandez votre devis gratuitement et sans engagement.",
+    "plans": {
+      "starter": {
+        "name": "Essentiel",
+        "description": "Idéal pour les petites entreprises qui souhaitent être présentes en ligne avec un site simple et professionnel.",
+        "cta": "Demander un devis",
+        "features": {
+          "f1": "Site professionnel jusqu'à 3 pages",
+          "f2": "Adapté aux téléphones, tablettes et ordinateurs",
+          "f3": "Formulaire pour recevoir les demandes de vos clients",
+          "f4": "Boutons vers vos réseaux sociaux (Facebook, Instagram, TikTok, LinkedIn, etc.)",
+          "f5": "Bouton WhatsApp pour être contacté directement",
+          "f6": "Optimisation de base pour être visible sur Google",
+          "f7": "Site sécurisé avec HTTPS",
+          "f8": "Mise en ligne du site incluse",
+          "f9": "1 mois de support offert"
+        }
+      },
+      "professional": {
+        "name": "Business",
+        "description": "Pour les entreprises qui souhaitent un site plus complet, moderne et personnalisé pour développer leur activité.",
+        "cta": "Commencer mon projet",
+        "features": {
+          "f1": "Site professionnel jusqu'à 7 pages",
+          "f2": "Design personnalisé selon votre marque",
+          "f3": "Disponible en français et en arabe",
+          "f4": "Animations modernes et fluides",
+          "f5": "Formulaires personnalisés selon vos besoins",
+          "f6": "Boutons vers vos réseaux sociaux (Facebook, Instagram, TikTok, LinkedIn, etc.)",
+          "f7": "Bouton WhatsApp pour faciliter le contact avec vos clients",
+          "f8": "Intégration de Google Maps",
+          "f9": "Optimisation avancée pour Google",
+          "f10": "Site rapide et optimisé pour tous les appareils",
+          "f11": "3 mois de support offert"
+        }
+      },
+      "enterprise": {
+        "name": "Sur mesure",
+        "description": "Pour les entreprises qui ont besoin d'une plateforme ou d'une application avec des fonctionnalités spécifiques.",
+        "cta": "Discuter de mon projet",
+        "features": {
+          "f1": "Application web entièrement personnalisée",
+          "f2": "Espace client ou espace administrateur",
+          "f3": "Création de comptes et connexion sécurisée",
+          "f4": "Gestion et stockage des données",
+          "f5": "Système de réservation ou de commande selon vos besoins",
+          "f6": "Paiement en ligne si nécessaire",
+          "f7": "Boutons et liens vers vos réseaux sociaux",
+          "f8": "Intégration WhatsApp et autres moyens de contact",
+          "f9": "Connexion avec d'autres services et outils",
+          "f10": "Solution conçue pour évoluer avec votre entreprise",
+          "f11": "Mise en ligne et accompagnement technique",
+          "f12": "Support personnalisé selon votre projet"
+        }
+      }
+    }
+  },
+  "why": {
+    "eyebrow": "Pourquoi choisir BTech",
+    "title": "L'avantage de travailler avec BTech.",
+    "items": {
+      "premium": {
+        "title": "Design Premium",
+        "description": "Chaque pixel pensé, chaque interaction intentionnelle."
+      },
+      "fast": {
+        "title": "Livraison Rapide",
+        "description": "Un processus optimisé pour lancer votre projet rapidement, sans raccourcis."
+      },
+      "performance": {
+        "title": "Performance Optimale",
+        "description": "Des sites rapides, optimisés et prêts pour la production."
+      },
+      "responsive": {
+        "title": "Responsive Design",
+        "description": "Une expérience parfaite sur tous les appareils et toutes les tailles d'écran."
+      },
+      "seo": {
+        "title": "SEO Optimisé",
+        "description": "Conçu pour être trouvé, indexé et bien classé dès le premier jour."
+      },
+      "support247": {
+        "title": "Support 24/7",
+        "description": "Une équipe disponible pour vous accompagner à tout moment."
+      },
+      "tech": {
+        "title": "Technologies Modernes",
+        "description": "Nous construisons avec les outils qui font le web de demain."
+      },
+      "pricing": {
+        "title": "Prix Compétitifs",
+        "description": "Une qualité premium à des tarifs justes et transparents."
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Questions fréquentes.",
+    "items": {
+      "cost": {
+        "question": "Combien coûte un site web ?",
+        "answer": "Le prix dépend du périmètre et des fonctionnalités. Consultez nos tarifs à partir de 499 DT, ou demandez un devis gratuit et personnalisé."
+      },
+      "timeline": {
+        "question": "Combien de temps dure un projet type ?",
+        "answer": "La plupart des sites web sont livrés en 2 à 4 semaines, tandis que les applications web prennent généralement 6 à 12 semaines selon la complexité."
+      },
+      "maintenance": {
+        "question": "Proposez-vous la maintenance après le lancement ?",
+        "answer": "Oui. Nous proposons des offres de maintenance, d'hébergement et de développement de nouvelles fonctionnalités après la mise en ligne."
+      },
+      "responsive": {
+        "question": "Mon site sera-t-il adapté aux mobiles ?",
+        "answer": "Absolument. Chaque projet est conçu et testé pour offrir une expérience parfaite sur mobile, tablette et ordinateur."
+      },
+      "freeQuote": {
+        "question": "Le devis est-il gratuit ?",
+        "answer": "Oui, chaque demande de devis est gratuite et sans engagement. Nous revenons vers vous sous 24 heures."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contactez-nous",
+    "title": "Construisons ensemble quelque chose de formidable.",
+    "subtitle": "Parlez-nous de votre projet et notre équipe vous répondra sous un jour ouvré.",
+    "form": {
+      "name": "Nom",
+      "namePlaceholder": "Jean Dupont",
+      "email": "Email",
+      "emailPlaceholder": "jean@entreprise.com",
+      "phone": "Téléphone",
+      "phonePlaceholder": "+216 00 000 000",
+      "company": "Entreprise",
+      "companyPlaceholder": "Nom de votre entreprise",
+      "service": "Service souhaité",
+      "servicePlaceholder": "Sélectionnez un service",
+      "budget": "Budget",
+      "budgetPlaceholder": "Sélectionnez une fourchette",
+      "message": "Message",
+      "messagePlaceholder": "Parlez-nous de votre projet...",
+      "submit": "Envoyer le message",
+      "submitting": "Envoi en cours...",
+      "success": "Merci ! Votre message a été envoyé avec succès.",
+      "error": "Une erreur est survenue. Veuillez réessayer.",
+      "budgets": {
+        "small": "Moins de 1 500 DT",
+        "medium": "1 500 – 5 000 DT",
+        "large": "5 000 – 15 000 DT",
+        "enterprise": "15 000 DT et plus"
+      }
+    },
+    "info": {
+      "address": "Tunis, Tunisie",
+      "email": "hello@btech-e.store",
+      "phone": "+216 00 000 000",
+      "website": "www.btech-e.store"
+    }
+  },
+  "footer": {
+    "description": "BTech est une agence de solutions numériques qui crée des sites web, applications et marques modernes pour les entreprises ambitieuses.",
+    "quickLinks": "Liens rapides",
+    "services": "Services",
+    "contact": "Contact",
+    "website": "www.btech-e.store",
+    "rights": "Tous droits réservés.",
+    "madeWith": "Conçu et développé avec soin par BTech."
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "cta": "Retour à l'accueil"
+  },
+  "common": {
+    "loading": "Chargement",
+    "backToTop": "Retour en haut",
+    "close": "Fermer",
+    "toggleMenu": "Basculer le menu",
+    "next": "Suivant",
+    "previous": "Précédent"
+  }
+}
