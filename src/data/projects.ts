@@ -58,6 +58,8 @@ export type ProjectCategory =
   | 'branding'
   | 'graphic-design'
   | 'web-app'
+  | 'cafe'
+  | 'business'
 
 export interface Project {
   /** Display name shown in the portfolio card. */
@@ -105,6 +107,19 @@ export interface Project {
  * ══════════════════════════════════════════════════════════
  */
 export const projects: Project[] = [
+  {
+    name: 'Volto Green',
+    type: 'website',
+    category: ['business'],
+    url: 'https://www.voltogreen.com/',
+    image:
+      'https://res.cloudinary.com/zrhkws3p/image/upload/v1784022985/Screenshot_2026-07-14_105514_kowxxq.png',
+    price: 199,
+    currency: 'DT',
+    badge: 'promo',
+    pp: 349,
+  },
+  
   {
     name: 'La Lanterne',
     type: 'website',
@@ -154,7 +169,7 @@ export const projects: Project[] = [
   {
     name: 'Chêne & Sauge',
     type: 'website',
-    category: ['cafe-resto', 'menu'],
+    category: ['cafe-resto', 'menu', 'cafe'],
     url: 'https://chene-and-sauge.netlify.app/',
     image:
       'https://res.cloudinary.com/zrhkws3p/image/upload/v1783710577/Screenshot_2026-07-10_195817_ksttmc.png',
@@ -162,27 +177,38 @@ export const projects: Project[] = [
     currency: 'DT',
   },
   {
-  name: "Olivier & Jasmin",
-  type: "website",
-  category: ["restaurant", "cafe-resto", "menu"],
-  url: 'https://oliver-jasmin.netlify.app',
-  image: 'https://res.cloudinary.com/zrhkws3p/image/upload/v1783763256/Screenshot_2026-07-11_103947_qwkeen.png',
-  price: 399,
-  currency: "DT",
-  badge: "promo",
-  pp: 599,
-},
-{
-  name: 'Wedding Simple',
-  type: 'website',
-  category: ['wedding invitation'],
-  url: 'https://simpleweddinginviatation.netlify.app/',
-  image: 'https://res.cloudinary.com/zrhkws3p/image/upload/v1783770829/Screenshot_2026-07-11_125308_keduuo.png',
-  currency: 'DT',
-  price: 99,
-  badge: "promo",
-  pp: 199,
-}
+    name: "Olivier & Jasmin",
+    type: "website",
+    category: ["restaurant", "cafe-resto", "menu", 'cafe'],
+    url: 'https://oliver-jasmin.netlify.app',
+    image: 'https://res.cloudinary.com/zrhkws3p/image/upload/v1783763256/Screenshot_2026-07-11_103947_qwkeen.png',
+    price: 399,
+    currency: "DT",
+    badge: "promo",
+    pp: 599,
+  },
+  {
+    name: 'Ahmed & Maram Wedding',
+    type: 'website',
+    category: ['wedding invitation'],
+    url: 'https://simpleweddinginvitationv2.netlify.app/',
+    image: 'https://res.cloudinary.com/zrhkws3p/image/upload/v1784025586/Screenshot_2026-07-14_113913_w0jaug.png',
+    price: 99,
+    currency: 'DT',
+    badge: "promo",
+    pp: 199,
+  },
+  {
+    name: 'Simple Wedding Invitation',
+    type: 'website',
+    category: ['wedding invitation'],
+    url: 'https://simpleweddinginviatation.netlify.app/',
+    image: 'https://res.cloudinary.com/zrhkws3p/image/upload/v1784025586/Screenshot_2026-07-14_113933_ivwzb7.png',
+    price: 99,
+    currency: 'DT',
+    badge: "promo",
+    pp: 199,
+  }
 
 
 ]

@@ -1,14 +1,14 @@
 export const SITE = {
   name: 'BTech',
   tagline: 'Transformer les idées en expériences numériques',
-  email: 'hello@btech-e.store',
-  phone: '+216 00 000 000',
+  email: 'bteche.store@outlook.com',
+  phone: '+216 51 862 083',
   address: 'Tunis, Tunisie',
   website: 'www.btech-e.store',
   social: {
-    facebook: 'https://facebook.com',
-    instagram: 'https://instagram.com',
-    whatsapp: 'https://wa.me/21600000000',
+    facebook: 'https://www.facebook.com/profile.php?id=61591965861933',
+    instagram: 'https://www.instagram.com/bteche.store',
+    whatsapp: 'https://wa.me/21651862083',
   },
 } as const
 
