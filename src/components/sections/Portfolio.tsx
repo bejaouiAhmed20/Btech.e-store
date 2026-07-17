@@ -120,23 +120,27 @@ export function Portfolio() {
                     exit={{ opacity: 0, scale: 0.95 }}
                     whileInView="visible"
                     viewport={viewportOnce}
-                    className="group relative block overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft transition-shadow hover:shadow-lift cursor-pointer"
+                    className="group relative block rounded-3xl border border-ink-100 bg-white shadow-soft transition-shadow hover:shadow-[0_8px_20px_rgba(0,0,0,0.18)] cursor-pointer"
                   >
+                    {/* Promo badge — outside overflow-hidden so it shows fully */}
+                    {project.badge && (
+                      <div className="absolute -top-5 -left-5 z-30 rotate-[-15deg] drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)] transition-transform duration-300 group-hover:scale-105 pointer-events-none">
+                        {project.badge === 'promo' ? (
+                          <img
+                            src="https://res.cloudinary.com/zrhkws3p/image/upload/v1784228046/promo_image_iici0n.png"
+                            alt="Promo Badge"
+                            className="h-24 w-auto object-contain md:h-28"
+                          />
+                        ) : (
+                          <span className="inline-flex items-center rounded-full bg-emerald-600 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-md">
+                            Nouveau
+                          </span>
+                        )}
+                      </div>
+                    )}
+
                     {/* Project image */}
-                    <div className="relative aspect-[4/3] overflow-hidden">
-                      {project.badge && (
-                        <div className="absolute top-4 left-4 z-10">
-                          {project.badge === 'promo' ? (
-                            <span className="inline-flex items-center rounded-full bg-red-600 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-md">
-                              Promo
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center rounded-full bg-emerald-600 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-md">
-                              Nouveau
-                            </span>
-                          )}
-                        </div>
-                      )}
+                    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-t-3xl">
                       <img
                         src={project.image}
                         alt={project.name}
@@ -155,7 +159,7 @@ export function Portfolio() {
                     {/* Card body */}
                     <div className="flex flex-col gap-3 p-6">
                       {/* Category badges */}
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-1.5 mb-2">
                         {project.category.map((cat) => (
                           <span
                             key={cat}
@@ -168,18 +172,25 @@ export function Portfolio() {
 
                       {/* Project name & Price */}
                       <div className="flex items-baseline justify-between gap-2">
-                        <h3 className="font-display text-lg font-semibold text-ink-900">
+                        <h3 className="font-display text-base font-semibold text-ink-900 mb-2">
                           {project.name}
                         </h3>
-                        <span className="flex items-baseline gap-2 shrink-0">
+                        <span className="flex items-baseline gap-2 shrink-0 mb-2">
                           {project.badge === 'promo' && project.pp && (
-                            <span className="font-display text-sm font-semibold text-red-500 line-through">
-                              {project.pp} {project.currency}
+                            <div className="flex flex-col items-end space-y-1">
+                              <span className="text-[12px] text-[#EF4444] line-through font-medium">
+                                  {project.pp} {project.currency}
+                                </span>
+                            <span className="text-[20px] text-[#2563EB] font-extrabold">
+                                {project.price} {project.currency}
+                              </span>
+                            </div>
+                          )}
+                          {!(project.badge === 'promo' && project.pp) && (
+                            <span className="text-[20px] text-[#2563EB] font-extrabold">
+                              {project.price} {project.currency}
                             </span>
                           )}
-                          <span className="font-display text-lg font-bold text-primary-600">
-                            {project.price} {project.currency}
-                          </span>
                         </span>
                       </div>
 

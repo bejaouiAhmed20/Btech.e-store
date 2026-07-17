@@ -60,7 +60,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="max-w-lg text-balance text-lg text-ink-500"
           >
-            Sites web, applications, branding, logos, design graphique et marketing digital — tout ce dont votre entreprise a besoin pour se démarquer.
+            Sites web, applications, branding, logos, design graphique et marketing digital, tout ce dont votre entreprise a besoin pour se démarquer.
           </motion.p>
 
           <motion.div

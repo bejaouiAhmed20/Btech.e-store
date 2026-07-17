@@ -13,8 +13,8 @@ export function Card({ children, className, hover = true, ...props }: CardProps)
       whileHover={hover ? { y: -6 } : undefined}
       transition={{ type: 'spring', stiffness: 300, damping: 24 }}
       className={cn(
-        'group relative rounded-3xl border border-ink-100 bg-white p-7 shadow-soft transition-shadow duration-300',
-        hover && 'hover:shadow-lift hover:border-primary-200',
+        'group relative rounded-3xl border border-ink-100 bg-white p-6 shadow-soft transition-shadow duration-300',
+        hover && 'hover:shadow-[0_8px_20px_rgba(0,0,0,0.18)] hover:border-primary-200',
         className,
       )}
       {...props}

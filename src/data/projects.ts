@@ -119,7 +119,7 @@ export const projects: Project[] = [
     badge: 'promo',
     pp: 349,
   },
-  
+
   {
     name: 'La Lanterne',
     type: 'website',
@@ -133,13 +133,13 @@ export const projects: Project[] = [
     pp: 349,
   },
   {
-    name: 'Mohamed Wedding',
+    name: 'Mohamed Amin Wedding',
     type: 'website',
     category: ['wedding invitation'],
     url: 'https://weddingmohamed.netlify.app/',
     image:
-      'https://res.cloudinary.com/zrhkws3p/image/upload/v1783710575/Screenshot_2026-07-10_194650_sb9p9x.png',
-    price: 99,
+      'https://res.cloudinary.com/zrhkws3p/image/upload/v1784227270/Screenshot_2026-07-16_194059_l86yje.png',
+    price: 139,
     currency: 'DT',
     badge: 'new',
   },
@@ -162,7 +162,7 @@ export const projects: Project[] = [
     url: 'https://cafelumier.netlify.app/',
     image:
       'https://res.cloudinary.com/zrhkws3p/image/upload/v1783710575/Screenshot_2026-07-10_194743_lezrcp.png',
-    price: 299,
+    price: 199,
     currency: 'DT',
     badge: 'new',
   },
@@ -182,10 +182,21 @@ export const projects: Project[] = [
     category: ["restaurant", "cafe-resto", "menu", 'cafe'],
     url: 'https://oliver-jasmin.netlify.app',
     image: 'https://res.cloudinary.com/zrhkws3p/image/upload/v1783763256/Screenshot_2026-07-11_103947_qwkeen.png',
-    price: 399,
+    price: 129,
     currency: "DT",
     badge: "promo",
-    pp: 599,
+    pp: 199,
+  },
+  {
+    name: "Wonder Land",
+    type: "website",
+    category: ["restaurant", "cafe-resto", "menu", 'cafe'],
+    url: 'https://wonderlandwebsite.netlify.app/',
+    image: 'https://res.cloudinary.com/zrhkws3p/image/upload/v1784226844/Screenshot_2026-07-16_193339_dnfzia.png',
+    price: 129,
+    currency: "DT",
+    badge: "promo",
+    pp: 199,
   },
   {
     name: 'Ahmed & Maram Wedding',
