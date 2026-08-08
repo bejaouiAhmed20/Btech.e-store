@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, User, LogOut } from 'lucide-react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { NAV_SECTIONS } from '@/constants/site'
 import { useScrolled } from '@/hooks/useScrolled'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import { scrollToId, cn } from '@/lib/utils'
+import { useAuth } from '@/features/auth/useAuth'
 import btechLogo from '@/assets/images/btech_logo.png'
 
 export function Navbar() {
@@ -14,10 +16,39 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const activeId = useActiveSection(NAV_SECTIONS.map((s) => s.id))
   const solid = scrolled || mobileOpen
+  const location = useLocation()
+  const navigate = useNavigate()
+  const { user, isLoading, signOut } = useAuth()
 
+  const isHome = location.pathname === '/'
+
+  /**
+   * Section links must work from any route: on the home page they scroll
+   * directly; from any other route they navigate to `/#section` and let
+   * useScrollToHash (mounted on Home) handle the actual scroll once the
+   * sections exist in the DOM.
+   */
   const handleNavClick = (id: string) => {
     setMobileOpen(false)
-    scrollToId(id)
+    if (id === 'home') {
+      if (isHome) {
+        scrollToId('home')
+      } else {
+        navigate('/')
+      }
+      return
+    }
+    if (isHome) {
+      scrollToId(id)
+    } else {
+      navigate(`/#${id}`)
+    }
+  }
+
+  const handleSignOut = async () => {
+    setMobileOpen(false)
+    await signOut()
+    navigate('/')
   }
 
   return (
@@ -52,7 +83,7 @@ export function Navbar() {
               )}
             >
               {section.label}
-              {activeId === section.id && (
+              {isHome && activeId === section.id && (
                 <motion.span
                   layoutId="nav-underline"
                   className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-accent-500"
@@ -64,9 +95,29 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button size="sm" className="hidden lg:inline-flex" onClick={() => handleNavClick('contact')}>
-            Commencez maintenant
-          </Button>
+          {!isLoading && user ? (
+            <div className="hidden items-center gap-2 lg:flex">
+              <Button
+                size="sm"
+                variant="outline"
+                icon={<User size={14} />}
+                onClick={() => navigate('/account')}
+              >
+                Mon compte
+              </Button>
+              <Button size="sm" variant="ghost" icon={<LogOut size={14} />} onClick={handleSignOut}>
+                Se déconnecter
+              </Button>
+            </div>
+          ) : (
+            <Button
+              size="sm"
+              className="hidden lg:inline-flex"
+              onClick={() => (isLoading ? undefined : navigate('/login'))}
+            >
+              Se connecter
+            </Button>
+          )}
           <button
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Basculer le menu"
@@ -94,15 +145,39 @@ export function Navbar() {
                   onClick={() => handleNavClick(section.id)}
                   className={cn(
                     'rounded-xl px-4 py-3 text-start text-base font-medium transition-colors',
-                    activeId === section.id ? 'bg-accent-50 text-accent-700' : 'text-ink-700',
+                    isHome && activeId === section.id ? 'bg-accent-50 text-accent-700' : 'text-ink-700',
                   )}
                 >
                   {section.label}
                 </button>
               ))}
-              <Button className="mt-2 w-full" onClick={() => handleNavClick('contact')}>
-                Commencez maintenant
-              </Button>
+
+              {!isLoading && user ? (
+                <>
+                  <button
+                    onClick={() => {
+                      setMobileOpen(false)
+                      navigate('/account')
+                    }}
+                    className="rounded-xl px-4 py-3 text-start text-base font-medium text-ink-700"
+                  >
+                    Mon compte
+                  </button>
+                  <Button variant="outline" className="mt-2 w-full" onClick={handleSignOut}>
+                    Se déconnecter
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  className="mt-2 w-full"
+                  onClick={() => {
+                    setMobileOpen(false)
+                    navigate('/login')
+                  }}
+                >
+                  Se connecter
+                </Button>
+              )}
             </Container>
           </motion.nav>
         )}

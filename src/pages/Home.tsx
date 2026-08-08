@@ -1,7 +1,10 @@
 import { Seo } from '@/components/common/Seo'
 import { Hero, About, Services, WhyChooseUs, Contact, Faq, Portfolio } from '@/components/sections'
+import { useScrollToHash } from '@/hooks/useScrollToHash'
 
 export default function Home() {
+  useScrollToHash()
+
   return (
     <>
       <Seo

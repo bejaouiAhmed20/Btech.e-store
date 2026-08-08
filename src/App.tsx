@@ -6,6 +6,7 @@ import { ErrorBoundary } from '@/components/common/ErrorBoundary'
 import { LoadingScreen } from '@/components/common/LoadingScreen'
 import { AppRoutes } from '@/routes/AppRoutes'
 import { muiTheme } from '@/theme/muiTheme'
+import { AuthProvider } from '@/features/auth/AuthProvider'
 
 function AppShell() {
   const [initialLoading, setInitialLoading] = useState(true)
@@ -28,7 +29,9 @@ function App() {
     <ErrorBoundary>
       <MuiThemeProvider theme={muiTheme}>
         <BrowserRouter>
-          <AppShell />
+          <AuthProvider>
+            <AppShell />
+          </AuthProvider>
         </BrowserRouter>
       </MuiThemeProvider>
     </ErrorBoundary>

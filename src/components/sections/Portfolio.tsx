@@ -1,48 +1,42 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ExternalLink, Clock } from 'lucide-react'
+import { ExternalLink, Clock, ShoppingCart } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { fadeUp, viewportOnce } from '@/animations/variants'
-import { portfolioFilters } from '@/data/portfolio'
-// ─── Single source of truth ───────────────────────────────────────────────────
-import { projects } from '@/data/projects'
-import type { PortfolioCategory } from '@/types'
+import {
+  templates,
+  templateFilters,
+  TEMPLATE_FILTER_LABELS,
+  matchesTemplateFilter,
+  type TemplateFilter,
+  type WebsiteTemplate,
+} from '@/data/templates'
+import { OrderModal } from '@/features/orders/components/OrderModal'
 import { cn } from '@/lib/utils'
 
-const FILTER_LABELS: Record<PortfolioCategory, string> = {
-  all: 'Tous',
-  websites: 'Sites Web',
-  restaurant: 'Restaurants',
-  'coffee-shop': 'Cafés',
-  'cafe-resto': 'Cafés & Restos',
-  wedding: 'Mariages',
-  branding: 'Branding',
-  'graphic-design': 'Design Graphique',
-  'web-apps': 'Applications Web',
-}
-
-/**
- * Maps a portfolio filter key to the project `type` and `category` values
- * stored in projects.ts.
- */
-function matchesFilter(project: (typeof projects)[number], filter: PortfolioCategory): boolean {
-  if (filter === 'all') return true
-  if (filter === 'websites') return project.type === 'website'
-  if (filter === 'coffee-shop') return project.category.includes('cafe-resto')
-  if (filter === 'wedding') return project.category.includes('wedding invitation')
-  return project.category.includes(filter as unknown as typeof project.category[number])
-}
-
 export function Portfolio() {
-  const [activeFilter, setActiveFilter] = useState<PortfolioCategory>('all')
+  const [activeFilter, setActiveFilter] = useState<TemplateFilter>('all')
+  const [orderTemplate, setOrderTemplate] = useState<WebsiteTemplate | null>(null)
+  const lastTriggerRef = useRef<HTMLButtonElement | null>(null)
 
-  const filteredProjects = useMemo(
-    () => projects.filter((p) => matchesFilter(p, activeFilter)),
+  const filteredTemplates = useMemo(
+    () => templates.filter((t) => matchesTemplateFilter(t, activeFilter)),
     [activeFilter],
   )
 
-  const isEmpty = filteredProjects.length === 0
+  const isEmpty = filteredTemplates.length === 0
+
+  const openOrderModal = (template: WebsiteTemplate, trigger: HTMLButtonElement) => {
+    lastTriggerRef.current = trigger
+    setOrderTemplate(template)
+  }
+
+  const closeOrderModal = () => {
+    setOrderTemplate(null)
+    // Restore focus to the "Commander" button that opened the modal.
+    lastTriggerRef.current?.focus()
+  }
 
   return (
     <section id="portfolio" className="snap-section py-24 sm:py-32">
@@ -50,12 +44,12 @@ export function Portfolio() {
         <SectionHeading
           eyebrow="Nos réalisations"
           title="Une sélection de projets qui parlent d'eux-mêmes."
-          subtitle="Un aperçu des sites, applications et marques que nous avons contribué à créer."
+          subtitle="Parcourez nos modèles de sites, ouvrez la démo en ligne et commandez celui qui vous correspond."
         />
 
         {/* Filter tabs */}
         <div className="flex flex-wrap justify-center gap-2">
-          {portfolioFilters.map((filter) => (
+          {templateFilters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
@@ -66,12 +60,12 @@ export function Portfolio() {
                   : 'bg-ink-100 text-ink-600 hover:bg-ink-200',
               )}
             >
-              {FILTER_LABELS[filter]}
+              {TEMPLATE_FILTER_LABELS[filter]}
             </button>
           ))}
         </div>
 
-        {/* Project grid or empty state */}
+        {/* Template grid or empty state */}
         <AnimatePresence mode="wait">
           {isEmpty ? (
             /* ── "Bientôt disponible" empty state ──────────────────────────── */
@@ -91,12 +85,12 @@ export function Portfolio() {
                   Bientôt disponible
                 </p>
                 <p className="max-w-xs text-sm text-ink-500">
-                  De nouveaux projets dans cette catégorie arrivent très prochainement.
+                  De nouveaux modèles dans cette catégorie arrivent très prochainement.
                 </p>
               </div>
             </motion.div>
           ) : (
-            /* ── Project cards ───────────────────────────────────────────── */
+            /* ── Template cards ───────────────────────────────────────────── */
             <motion.div
               key="grid"
               layout
@@ -107,12 +101,9 @@ export function Portfolio() {
               className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
             >
               <AnimatePresence mode="popLayout">
-                {filteredProjects.map((project) => (
-                  <motion.a
-                    key={project.url}
-                    href={project.url}
-                    target="_blank"
-                    rel="noreferrer noopener"
+                {filteredTemplates.map((template) => (
+                  <motion.div
+                    key={template.id}
                     layout
                     variants={fadeUp}
                     initial="hidden"
@@ -120,15 +111,15 @@ export function Portfolio() {
                     exit={{ opacity: 0, scale: 0.95 }}
                     whileInView="visible"
                     viewport={viewportOnce}
-                    className="group relative block rounded-3xl border border-ink-100 bg-white shadow-soft transition-shadow hover:shadow-[0_8px_20px_rgba(0,0,0,0.18)] cursor-pointer"
+                    className="group relative flex flex-col rounded-3xl border border-ink-100 bg-white shadow-soft transition-shadow hover:shadow-[0_8px_20px_rgba(0,0,0,0.18)]"
                   >
                     {/* Promo badge — outside overflow-hidden so it shows fully */}
-                    {project.badge && (
+                    {template.badge && (
                       <div className="absolute -top-5 -left-5 z-30 rotate-[-15deg] drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)] transition-transform duration-300 group-hover:scale-105 pointer-events-none">
-                        {project.badge === 'promo' ? (
+                        {template.badge === 'promo' ? (
                           <img
                             src="https://res.cloudinary.com/zrhkws3p/image/upload/v1784228046/promo_image_iici0n.png"
-                            alt="Promo Badge"
+                            alt="Promo"
                             className="h-24 w-auto object-contain md:h-28"
                           />
                         ) : (
@@ -139,28 +130,32 @@ export function Portfolio() {
                       </div>
                     )}
 
-                    {/* Project image */}
-                    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-t-3xl">
+                    {/* Template image + demo link */}
+                    <a
+                      href={template.demoUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label={`Voir la démo de ${template.name} (nouvel onglet)`}
+                      className="relative block w-full aspect-[4/3] overflow-hidden rounded-t-3xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+                    >
                       <img
-                        src={project.image}
-                        alt={project.name}
+                        src={template.image}
+                        alt={template.name}
                         loading="lazy"
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-
-                      {/* Hover overlay with live link */}
                       <div className="absolute inset-0 flex items-end bg-gradient-to-t from-ink-950/80 via-ink-950/10 to-transparent p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        <span className="flex items-center gap-1.5 rounded-full bg-accent-500 px-4 py-2 text-xs font-semibold text-white transition-transform hover:-translate-y-0.5">
-                          Démo en ligne <ExternalLink size={12} />
+                        <span className="flex items-center gap-1.5 rounded-full bg-accent-500 px-4 py-2 text-xs font-semibold text-white">
+                          Voir la démo <ExternalLink size={12} />
                         </span>
                       </div>
-                    </div>
+                    </a>
 
                     {/* Card body */}
-                    <div className="flex flex-col gap-3 p-6">
+                    <div className="flex flex-1 flex-col gap-3 p-6">
                       {/* Category badges */}
-                      <div className="flex flex-wrap gap-1.5 mb-2">
-                        {project.category.map((cat) => (
+                      <div className="flex flex-wrap gap-1.5">
+                        {template.category.map((cat) => (
                           <span
                             key={cat}
                             className="rounded-full bg-primary-50 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary-700"
@@ -170,42 +165,57 @@ export function Portfolio() {
                         ))}
                       </div>
 
-                      {/* Project name & Price */}
+                      {/* Name & price */}
                       <div className="flex items-baseline justify-between gap-2">
-                        <h3 className="font-display text-base font-semibold text-ink-900 mb-2">
-                          {project.name}
+                        <h3 className="font-display text-base font-semibold text-ink-900">
+                          {template.name}
                         </h3>
-                        <span className="flex items-baseline gap-2 shrink-0 mb-2">
-                          {project.badge === 'promo' && project.pp && (
-                            <div className="flex flex-col items-end space-y-1">
-                              <span className="text-[12px] text-[#EF4444] line-through font-medium">
-                                  {project.pp} {project.currency}
-                                </span>
-                            <span className="text-[20px] text-[#2563EB] font-extrabold">
-                                {project.price} {project.currency}
+                        <span className="flex shrink-0 items-baseline gap-2">
+                          {template.badge === 'promo' && template.previousPrice ? (
+                            <span className="flex flex-col items-end">
+                              <span className="text-[12px] font-medium text-red-500 line-through">
+                                {template.previousPrice} {template.currency}
                               </span>
-                            </div>
-                          )}
-                          {!(project.badge === 'promo' && project.pp) && (
-                            <span className="text-[20px] text-[#2563EB] font-extrabold">
-                              {project.price} {project.currency}
+                              <span className="text-[20px] font-extrabold text-primary-600">
+                                {template.price} {template.currency}
+                              </span>
+                            </span>
+                          ) : (
+                            <span className="text-[20px] font-extrabold text-primary-600">
+                              {template.price} {template.currency}
                             </span>
                           )}
                         </span>
                       </div>
 
-                      {/* External link indicator */}
-                      <span className="flex items-center gap-1 text-sm font-medium text-accent-600 transition-colors group-hover:text-accent-700">
-                        Démo en ligne <ExternalLink size={13} />
-                      </span>
+                      {/* Actions */}
+                      <div className="mt-auto flex flex-wrap items-center gap-3 pt-2">
+                        <a
+                          href={template.demoUrl}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="inline-flex items-center gap-1.5 rounded-full border border-ink-200 px-4 py-2 text-sm font-medium text-ink-700 transition-colors hover:border-accent-500 hover:text-accent-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+                        >
+                          Voir la démo <ExternalLink size={13} />
+                        </a>
+                        <button
+                          type="button"
+                          onClick={(event) => openOrderModal(template, event.currentTarget)}
+                          className="inline-flex items-center gap-1.5 rounded-full bg-primary-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+                        >
+                          Commander <ShoppingCart size={13} />
+                        </button>
+                      </div>
                     </div>
-                  </motion.a>
+                  </motion.div>
                 ))}
               </AnimatePresence>
             </motion.div>
           )}
         </AnimatePresence>
       </Container>
+
+      <OrderModal template={orderTemplate} onClose={closeOrderModal} />
     </section>
   )
 }
