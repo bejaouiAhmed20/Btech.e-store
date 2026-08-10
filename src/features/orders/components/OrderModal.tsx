@@ -19,11 +19,14 @@ export function OrderModal({ template, onClose }: OrderModalProps) {
   const navigate = useNavigate()
 
   const handleClose = useCallback(() => {
-    if (isSubmitting) return
+    if (isSubmitting && !result) return
     onClose()
     // Reset after the close animation has had time to run.
-    setTimeout(() => setResult(null), 300)
-  }, [isSubmitting, onClose])
+    setTimeout(() => {
+      setResult(null)
+      setIsSubmitting(false)
+    }, 300)
+  }, [isSubmitting, result, onClose])
 
   return (
     <Modal isOpen={!!template} onClose={handleClose} labelledBy="order-modal-title">

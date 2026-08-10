@@ -8,6 +8,7 @@ import { createOrder, OrderServiceError } from '@/features/orders/orderService'
 import { signUpWithEmail } from '@/features/auth/authService'
 import { AuthServiceError } from '@/features/auth/authService'
 import { useAuth } from '@/features/auth/useAuth'
+import { sendOrderEmail } from '@/services/emailService'
 import type { WebsiteTemplate } from '@/data/templates'
 import type { CreateOrderResponse } from '@/features/orders/types'
 import { cn } from '@/lib/utils'
@@ -88,6 +89,20 @@ export function OrderForm({ template, onSuccess, onSubmittingChange }: OrderForm
         customerPhone: values.customerPhone,
         customizationDetails: values.customizationDetails || undefined,
       })
+
+      try {
+        await sendOrderEmail({
+          command_code: order.reference,
+          from_name: values.customerName,
+          from_email: values.customerEmail,
+          to_email: 'bteche.store@outlook.com',
+          phone: values.customerPhone,
+          description: values.customizationDetails || 'No specific details provided',
+        });
+      } catch (emailError) {
+        // We log the error but we don't fail the order submission if the email fails
+        console.error('Failed to send notification email:', emailError);
+      }
 
       onSuccess({ order, accountCreated })
     } catch (error) {
