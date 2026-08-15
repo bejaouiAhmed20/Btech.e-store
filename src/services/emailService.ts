@@ -10,6 +10,9 @@ export interface OrderEmailTemplateParams {
   from_email: string;
   to_email: string;
   phone: string;
+  template_name: string;
+  template_category: string;
+  template_price: string;
   description: string;
 }
 

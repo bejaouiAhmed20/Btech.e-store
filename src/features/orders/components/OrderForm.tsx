@@ -97,6 +97,9 @@ export function OrderForm({ template, onSuccess, onSubmittingChange }: OrderForm
           from_email: values.customerEmail,
           to_email: 'bteche.store@outlook.com',
           phone: values.customerPhone,
+          template_name: template.name,
+          template_category: template.category.join(', '),
+          template_price: `${template.price} ${template.currency}`,
           description: values.customizationDetails || 'No specific details provided',
         });
       } catch (emailError) {

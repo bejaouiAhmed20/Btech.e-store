@@ -72,10 +72,10 @@ export const templates: WebsiteTemplate[] = [
     demoUrl: 'https://www.voltogreen.com/',
     image:
       'https://res.cloudinary.com/zrhkws3p/image/upload/v1784022985/Screenshot_2026-07-14_105514_kowxxq.png',
-    price: 199,
+    price: 299,
     currency: 'DT',
     badge: 'promo',
-    previousPrice: 349,
+    previousPrice: 499,
   },
   {
     id: 'la-lanterne',
@@ -86,10 +86,10 @@ export const templates: WebsiteTemplate[] = [
     demoUrl: 'https://lalanterne.netlify.app/',
     image:
       'https://res.cloudinary.com/zrhkws3p/image/upload/v1783710574/Screenshot_2026-07-10_194707_nglptu.png',
-    price: 199,
+    price: 299,
     currency: 'DT',
     badge: 'promo',
-    previousPrice: 349,
+    previousPrice: 449,
   },
   {
     id: 'mohamed-amin-wedding',
@@ -100,7 +100,7 @@ export const templates: WebsiteTemplate[] = [
     demoUrl: 'https://weddingmohamed.netlify.app/',
     image:
       'https://res.cloudinary.com/zrhkws3p/image/upload/v1784227270/Screenshot_2026-07-16_194059_l86yje.png',
-    price: 139,
+    price: 249,
     currency: 'DT',
     badge: 'new',
   },
@@ -113,10 +113,10 @@ export const templates: WebsiteTemplate[] = [
     demoUrl: 'https://shop-menu-test.netlify.app/',
     image:
       'https://res.cloudinary.com/zrhkws3p/image/upload/v1783710577/Screenshot_2026-07-10_194723_wv6rpb.png',
-    price: 149,
+    price: 249,
     currency: 'DT',
     badge: 'promo',
-    previousPrice: 299,
+    previousPrice: 399,
   },
   {
     id: 'cafe-lumiere',
@@ -127,7 +127,7 @@ export const templates: WebsiteTemplate[] = [
     demoUrl: 'https://cafelumier.netlify.app/',
     image:
       'https://res.cloudinary.com/zrhkws3p/image/upload/v1783710575/Screenshot_2026-07-10_194743_lezrcp.png',
-    price: 199,
+    price: 299,
     currency: 'DT',
     badge: 'new',
   },
@@ -140,7 +140,7 @@ export const templates: WebsiteTemplate[] = [
     demoUrl: 'https://chene-and-sauge.netlify.app/',
     image:
       'https://res.cloudinary.com/zrhkws3p/image/upload/v1783710577/Screenshot_2026-07-10_195817_ksttmc.png',
-    price: 149,
+    price: 249,
     currency: 'DT',
   },
   {
@@ -152,10 +152,10 @@ export const templates: WebsiteTemplate[] = [
     demoUrl: 'https://oliver-jasmin.netlify.app',
     image:
       'https://res.cloudinary.com/zrhkws3p/image/upload/v1783763256/Screenshot_2026-07-11_103947_qwkeen.png',
-    price: 129,
+    price: 229,
     currency: 'DT',
     badge: 'promo',
-    previousPrice: 199,
+    previousPrice: 349,
   },
   {
     id: 'wonder-land',
@@ -166,10 +166,10 @@ export const templates: WebsiteTemplate[] = [
     demoUrl: 'https://wonderlandwebsite.netlify.app/',
     image:
       'https://res.cloudinary.com/zrhkws3p/image/upload/v1784226844/Screenshot_2026-07-16_193339_dnfzia.png',
-    price: 129,
+    price: 229,
     currency: 'DT',
     badge: 'promo',
-    previousPrice: 199,
+    previousPrice: 349,
   },
   {
     id: 'ahmed-maram-wedding',
@@ -180,10 +180,10 @@ export const templates: WebsiteTemplate[] = [
     demoUrl: 'https://simpleweddinginvitationv2.netlify.app/',
     image:
       'https://res.cloudinary.com/zrhkws3p/image/upload/v1784025586/Screenshot_2026-07-14_113913_w0jaug.png',
-    price: 99,
+    price: 199,
     currency: 'DT',
     badge: 'promo',
-    previousPrice: 199,
+    previousPrice: 299,
   },
   {
     id: 'simple-wedding-invitation',
@@ -194,10 +194,10 @@ export const templates: WebsiteTemplate[] = [
     demoUrl: 'https://simpleweddinginviatation.netlify.app/',
     image:
       'https://res.cloudinary.com/zrhkws3p/image/upload/v1784025586/Screenshot_2026-07-14_113933_ivwzb7.png',
-    price: 99,
+    price: 199,
     currency: 'DT',
     badge: 'promo',
-    previousPrice: 199,
+    previousPrice: 299,
   },
 ]
 
