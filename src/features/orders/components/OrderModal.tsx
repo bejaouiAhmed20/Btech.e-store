@@ -47,13 +47,16 @@ export function OrderModal({ template, onClose }: OrderModalProps) {
               </p>
             </div>
             <div className="shrink-0 text-right">
-              {template.badge === 'promo' && template.previousPrice && (
-                <p className="text-xs text-red-500 line-through">
+              <span className="block text-[10px] font-medium uppercase tracking-wider text-ink-400">
+                À partir de
+              </span>
+              {template.previousPrice && (
+                <p className="text-xs font-semibold text-red-500 line-through">
                   {template.previousPrice} {template.currency}
                 </p>
               )}
               <p className="text-lg font-extrabold text-primary-600">
-                {template.price} {template.currency}
+                {template.startingPrice} {template.currency}
               </p>
             </div>
           </div>

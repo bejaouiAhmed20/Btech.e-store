@@ -113,7 +113,7 @@ export function Portfolio() {
                     viewport={viewportOnce}
                     className="group relative flex flex-col rounded-3xl border border-ink-100 bg-white shadow-soft transition-shadow hover:shadow-[0_8px_20px_rgba(0,0,0,0.18)]"
                   >
-                    {/* Promo badge — outside overflow-hidden so it shows fully */}
+                    {/* Promo / Soldes badge — outside overflow-hidden so it shows fully */}
                     {template.badge && (
                       <div className="absolute -top-5 -left-5 z-30 rotate-[-15deg] drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)] transition-transform duration-300 group-hover:scale-105 pointer-events-none">
                         {template.badge === 'promo' ? (
@@ -122,6 +122,10 @@ export function Portfolio() {
                             alt="Promo"
                             className="h-24 w-auto object-contain md:h-28"
                           />
+                        ) : template.badge === 'soldes' ? (
+                          <span className="inline-flex items-center rounded-full bg-red-600 px-3.5 py-1.5 text-[12px] font-black uppercase tracking-wider text-white shadow-lg ring-2 ring-white">
+                            🔥 SOLDES
+                          </span>
                         ) : (
                           <span className="inline-flex items-center rounded-full bg-emerald-600 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-md">
                             Nouveau
@@ -170,21 +174,18 @@ export function Portfolio() {
                         <h3 className="font-display text-base font-semibold text-ink-900">
                           {template.name}
                         </h3>
-                        <span className="flex shrink-0 items-baseline gap-2">
-                          {template.badge === 'promo' && template.previousPrice ? (
-                            <span className="flex flex-col items-end">
-                              <span className="text-[12px] font-medium text-red-500 line-through">
-                                {template.previousPrice} {template.currency}
-                              </span>
-                              <span className="text-[20px] font-extrabold text-primary-600">
-                                {template.price} {template.currency}
-                              </span>
-                            </span>
-                          ) : (
-                            <span className="text-[20px] font-extrabold text-primary-600">
-                              {template.price} {template.currency}
+                        <span className="shrink-0 text-right">
+                          <span className="block text-[10px] font-medium uppercase tracking-wider text-ink-400">
+                            À partir de
+                          </span>
+                          {template.previousPrice && (
+                            <span className="mr-1.5 text-[13px] font-semibold text-red-500 line-through">
+                              {template.previousPrice} {template.currency}
                             </span>
                           )}
+                          <span className="text-[20px] font-extrabold text-primary-600">
+                            {template.startingPrice} {template.currency}
+                          </span>
                         </span>
                       </div>
 
